@@ -1,0 +1,56 @@
+\begin{figure}
+\centering
+
+\begin{scriptsize}
+    \begin{subfigure}[The $L3$ restaurant has only one table.]{
+            \begin{tikzpicture} 
+                \node [circle,thick,draw,align=center,
+                label={[black]above:$L2(L1(the) L1(dog))$},
+                label={[black]below:$L2(L1(barks) L1(at))$},
+                label={[black]right:$L2(L1(the) L1(cat))$},
+                text width=1.6cm,
+                ] {the dog barks at the cat};
+            \end{tikzpicture}}
+    \end{subfigure}
+
+    \begin{subfigure}[The $L2$ restaurant has 3 tables.]{
+            \begin{tikzpicture}
+                \node [circle,thick,draw,
+                label={[black]above:$L1(the)$},
+                label={[black]below:$L1(dog)$},
+                ] (t1) {the dog};
+                \node [circle,thick,draw,
+                label={[black]above:$L1(barks)$},
+                label={[black]below:$L1(at)$},
+                ] (t2) [right=of t1] {barks at};
+                \node [circle,thick,draw,
+                label={[black]above:$L1(the)$},
+                label={[black]below:$L1(cat)$},
+                ] (t3) [right=of t2] {the cat};
+            \end{tikzpicture}}
+    \end{subfigure}
+
+    \begin{subfigure}[The $L1$ restaurant has 5 tables.]{
+            \begin{tikzpicture}[every node/.style={circle,draw,thick,minimum size=1cm}]
+                \node [
+                    label={[black]above:$the_1$},
+                    label={[black]below:$the_2$},
+                ] (t1) {the};
+                \node [
+                    label={[black]above:$dog$},
+                ] (t2) [right=of t1] {dog};
+                \node [
+                    label={[black]above:$barks$},
+                ] (t3) [right=of t2] {barks};
+                \node [
+                    label={[black]above:$at$},
+                ] (t4) [right=of t3] {at};
+                \node [
+                    label={[black]above:$cat$},
+                ] (t5) [right=of t4] {cat};
+            \end{tikzpicture}}
+    \end{subfigure}
+\end{scriptsize}
+\caption{The 3 restaurants for all 3 levels.}
+
+\end{figure}

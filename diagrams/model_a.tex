@@ -1,0 +1,8 @@
+\resizebox{4.5cm}{4.5cm}{%
+    \begin{tikzpicture}
+        \begin{axis}[legend pos=outer north east]
+            \addplot[blue, mark=none] table[x=t, y=x] {timeseries.dat};
+            \addplot[red, mark=none] table[x=t, y=z] {timeseries.dat};
+        \end{axis}
+    \end{tikzpicture}
+}
