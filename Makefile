@@ -1,6 +1,6 @@
 
-archivo=third
-biblio=third
+archivo=linear_algebra_ml
+biblio=linear_algebra_ml
 PUBLISH=slides/
 
 # all: compile bibliography recompile open
@@ -12,10 +12,10 @@ clean:
 	rm -rf $(PUBLISH)*.vrb
 
 compile:
-	lualatex -output-directory $(PUBLISH) ep2018.tex
+	lualatex -output-directory $(PUBLISH) $(archivo).tex
 
 #bibliography:
 #	bibtex publish/gutierrez_cv
 
 read:
-	evince $(PUBLISH)ep2018.pdf &
+	evince $(PUBLISH)$(archivo).pdf &
