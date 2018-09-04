@@ -4,6 +4,7 @@
 %\usepackage{pgfpages}
 %%\setbeameroption{show notes}
 %\setbeameroption{show notes on second screen=right}
+%https://tex.stackexchange.com/questions/377608/animated-tikz-matrix-inside-a-flowchart-node
 
 \setbeamertemplate{caption}[numbered]
 
@@ -249,6 +250,13 @@
 
 \subsection{Matrices}
 \begin{frame}[fragile]{Matrix - \textit{rank-2 tensors}}
+    \begin{itemize}
+        \item Matrices are sometimes used to represent \textbf{vector transformations}.
+        % \item Include some example of matrix transpose
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Matrix - \textit{rank-2 tensors}}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
@@ -277,8 +285,19 @@
     \end{columns}
 \end{frame}
 
-\section{Examples}
 
+\begin{frame}[fragile]{Matrices}
+    \begin{itemize}
+        \item Matrix multiplication is not commutative. $AB \neq BA$ in general.
+    \end{itemize}
+\end{frame}
+
+
+%\begin{frame}[fragile]{\textit{Rank-3 tensors}}
+%\end{frame}
+
+
+\section{Examples}
 \begin{frame}[fragile]
     \frametitle{Linear Regression}
     \begin{figure}[htb]
@@ -293,12 +312,91 @@
     \frametitle{Linear Regression}
     \Large
     \begin{itemize}
-        \item We want to calculate the intercept $a$ and the slope $b$.
+        \item Linear regression is the Swiss Army Knife of Data Science.
     \end{itemize}
     \begin{align*}
         \argmin{a, b} \sum_i (y_i - (ax_i + b))^2 =
         \argmin{\boldsymbol{w}} || \boldsymbol{Xw} - \boldsymbol{y} ||^{2}
     \end{align*}
+\end{frame}
+
+
+% matrix notation
+% ToDo: Add arrows
+% https://tex.stackexchange.com/questions/361375/how-to-add-arrow-in-equations-and-matrix
+\begin{frame}[fragile]
+    \frametitle{Linear Regression}
+    \Large
+    \begin{itemize}
+        \item We want to calculate the $w$ coefficients
+    \end{itemize}
+    \[ 
+    \left(
+    \begin{array}{c}
+        y_1 \\
+        y_2 \\
+        \ldots \\
+        y_n 
+    \end{array}
+    \right)
+    = 
+    \left(
+    \begin{array}{ccc}
+        1 & x_1 \\
+        1 & x_2 \\
+        1 & \ldots \\
+        1 & x_n 
+    \end{array}
+    \right)
+    \bullet
+    \left(
+    \begin{array}{ccc}
+        w_0 \\
+        w_1 \\
+    \end{array}
+    \right)
+    \] 
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Linear Regression}
+    \Large
+    \begin{itemize}
+        \item In the simplest case we want to calculate the intercept $a$ and the slope $b$.
+    \end{itemize}
+    \[ 
+    \left(
+    \begin{array}{c}
+        y_1 \\
+        y_2 \\
+        \ldots \\
+        y_n 
+    \end{array}
+    \right)
+    = 
+    \left(
+    \begin{array}{ccc}
+        1 & x_1 \\
+        1 & x_2 \\
+        1 & \ldots \\
+        1 & x_n 
+    \end{array}
+    \right)
+    \bullet
+    \left(
+    \begin{array}{ccc}
+        a \\
+        b \\
+    \end{array}
+    \right)
+    \] 
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Linear Regression}
+    \Large
     \begin{itemize}
         \item The solution to this optimization problem is:
     \end{itemize}
