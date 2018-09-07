@@ -4,7 +4,7 @@
 %\usepackage{pgfpages}
 %%\setbeameroption{show notes}
 %\setbeameroption{show notes on second screen=right}
-%https://tex.stackexchange.com/questions/377608/animated-tikz-matrix-inside-a-flowchart-node
+
 
 \setbeamertemplate{caption}[numbered]
 
@@ -129,7 +129,35 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Length of a vector}
+\begin{frame}[fragile]{Norms - $L^n$}
+    \begin{columns}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{column}{0.5\textwidth}
+        \huge
+            \begin{align*}
+                ||\boldsymbol{x}||_p = \Bigg( \sum^{n}_{i=1}̣ |x_i|^p\Bigg)^\frac{1}{p}
+            \end{align*}
+        \end{column}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{NumPy}
+                \begin{lstlisting}
+                np.linalg.norm(a)
+                \end{lstlisting}
+            \end{alertblock}
+            \begin{alertblock}{TensorFlow}
+                \begin{lstlisting}
+                tf.linalg.norm(a, ord=1)
+                tf.norm(a)
+                \end{lstlisting}
+            \end{alertblock}
+        \end{column}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]{Length of a vector - $L^2$ norm}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
@@ -157,7 +185,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Distance between vectors}
+\begin{frame}[fragile]{Distance between vectors - $L^2$ norm}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
@@ -176,7 +204,47 @@
             \end{alertblock}
             \begin{alertblock}{TensorFlow}
                 \begin{lstlisting}
+                # Manhattan
+                tf.norm(a-b, ord=1)
+                # Euclidean
                 tf.norm(a-b, ord="euclidean")
+                tf.norm(a-b, ord=2)
+                \end{lstlisting}
+            \end{alertblock}
+        \end{column}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \end{columns}
+\end{frame}
+
+
+% Explain the relationship with norms
+% Add visualizations
+% Explain that the distances are used for error functions
+
+\begin{frame}[fragile]{More}
+    \begin{columns}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{column}{0.5\textwidth}
+    \Large
+    \begin{align*}
+        d(\boldsymbol{a}, \boldsymbol{b}) &= ||\boldsymbol{a} - \boldsymbol{b}||\\
+                                          &= \sqrt{\sum_{i=0}^n (a_{i} - b_{i})^2}
+    \end{align*}
+        \end{column}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{NumPy}
+                \begin{lstlisting}
+                np.linalg.norm(a-b)
+                \end{lstlisting}
+            \end{alertblock}
+            \begin{alertblock}{TensorFlow}
+                \begin{lstlisting}
+                # Manhattan
+                tf.norm(a-b, ord=1)
+                # Euclidean
+                tf.norm(a-b, ord="euclidean")
+                tf.norm(a-b, ord=2)
                 \end{lstlisting}
             \end{alertblock}
         \end{column}
@@ -420,14 +488,33 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]\frametitle{Eigendecomposition}
+    \Large
+    \begin{itemize}
+        \item This \textbf{matrix decomposition} technique is the base of \textbf{dimensionality reduction}.
+    \end{itemize}
+    \begin{align*}
+        \boldsymbol{Av} = \lambda \boldsymbol{v}
+    \end{align*}
+    \begin{itemize}
+        \item $\boldsymbol{A}$ (with dimension $N\times N$) is a square matrix
+        \item $\boldsymbol{v}$ (with dimension $N$) is the eigenvector
+        \item $\lambda$ is a scalar value
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Neural Networks}
+    \begin{itemize}
+        \item \textbf{ToDo}.
+    \end{itemize}
+\end{frame}
+
 \section{Conclusions}
 
 \begin{frame}{More topics we should check}
     \begin{itemize}
         \item \textbf{Gradient descent} is a beautiful optimization algorithm,
                 basically, we multiply matrices to many times.
-        \item \textbf{Eigenvectors} and \textbf{eigenvalues}; some
-                dimensionality reduction techniques are based on eigendecomposition.
         \item Be aware that \textbf{numerical instabilities} can happen, and avoid these ones.
     \end{itemize} 
 \end{frame}
