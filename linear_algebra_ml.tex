@@ -113,29 +113,60 @@
 \section{Tensors}
 \subsection{Vectors}
 
-\begin{frame}{Vectors - \textit{rank-1 tensors}}
+\begin{frame}[fragile]{Vectors - \textit{rank-1 tensors}}
     \begin{itemize}
         \item A vector is a collection of numbers
     \end{itemize}
-    \Huge
+    \begin{columns}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{column}{0.5\textwidth}
+    \large
     \begin{align*} 
         \textcolor{blue}{\vec{a} = \boldsymbol{a}} &= \begin{bmatrix}
            a_{1}  \\
            a_{2}  \\
            \vdots \\
            a_{n}  
+         \end{bmatrix}\\
+         \begin{bmatrix}
+             a_{1}  & a_{2}  & \vdots & a_{n}  
          \end{bmatrix}
     \end{align*}
+        \end{column}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{NumPy}
+                \begin{lstlisting}
+                # simple vector definition
+                a = np.array((5, 4, 3, 2, 1))
+                #  shape and size 
+                a.shape
+                a.size
+                # zeros
+                np.zeros((5, 5))
+                # ones
+                np.ones((5, 5))
+                # matrix
+                np.matrix([[1, 0], [0, 1]])
+                \end{lstlisting}
+            \end{alertblock}
+        \end{column}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % there are other aspects to take into account, for example, the indexing, appending, reshape, element wise operations
+    \end{columns}
 \end{frame}
 
+% regularization,
+% cost function
+% l2 norm in svm
 
-\begin{frame}[fragile]{Norms - $L^n$}
+\begin{frame}[fragile]{Norms - $L^p$}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
         \huge
             \begin{align*}
-                ||\boldsymbol{x}||_p = \Bigg( \sum^{n}_{i=1}̣ |x_i|^p\Bigg)^\frac{1}{p}
+                ||\boldsymbol{a}||_p = \Bigg( \sum^{n}_{i=1}̣ |a_i|^p\Bigg)^\frac{1}{p}
             \end{align*}
         \end{column}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,13 +188,17 @@
 \end{frame}
 
 
+% when we use max norm and L1 norm?
+% Frobenius norm for matrices
+
 \begin{frame}[fragile]{Length of a vector - $L^2$ norm}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
         \huge
             \begin{align*}
-                \textcolor{blue}{|\boldsymbol{a}|} &= \sqrt{\sum^{n}_{i=0} a_i^2}
+                ||\boldsymbol{a}||_2 &= \Bigg( \sum^{n}_{i=1}̣ |a_i|^2\Bigg)^\frac{1}{2}\\
+                                     &= \sqrt{\sum^{n}_{i=1} a_i^2}
             \end{align*}
         \end{column}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,7 +256,7 @@
 % Add visualizations
 % Explain that the distances are used for error functions
 
-\begin{frame}[fragile]{More}
+\begin{frame}[fragile]{More distances}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
@@ -290,7 +325,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Dot product}
+\begin{frame}[fragile]{Dot product and norms}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
@@ -315,16 +350,27 @@
     \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Unit vectors}
+    \begin{itemize}
+        \item \textbf{ToDo}.
+        \item Normalization: $\textcolor{blue}{\frac{x}{||x||_2}}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Orthogonality}
+    \begin{itemize}
+        \item \textbf{ToDo}.
+        \item $\textcolor{blue}{\bold{x}^\top\bold{y} = 0}$
+        \item When two unit vectors are orthogonal are called \textbf{orthonormal}.
+    \end{itemize}
+\end{frame}
+
 
 \subsection{Matrices}
 \begin{frame}[fragile]{Matrix - \textit{rank-2 tensors}}
     \begin{itemize}
-        \item Matrices are sometimes used to represent \textbf{vector transformations}.
-        % \item Include some example of matrix transpose
+        \item Matrix multiplication is not commutative. $AB \neq BA$ in general.
     \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Matrix - \textit{rank-2 tensors}}
     \begin{columns}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{column}{0.5\textwidth}
@@ -340,6 +386,7 @@
         \begin{column}{0.5\textwidth}
             \begin{alertblock}{NumPy}
                 \begin{lstlisting}
+                # matmul vs dot
                 np.matmul(a, b)
                 \end{lstlisting}
             \end{alertblock}
@@ -354,16 +401,31 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Matrices}
+% write more about diagonal matrices, computationally efficient matrix operations
+% symmetric matrix, A = A.T
+\begin{frame}[fragile]{More special matrices}
     \begin{itemize}
-        \item Matrix multiplication is not commutative. $AB \neq BA$ in general.
+        \item ToDo
+        \item Transpose
+        \item Diagonal matrices
+        \item Identity matrices
+        \item Symmetric matrices % distance matrices
+        \item Inverse matrix
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Vector transformations}
+    \begin{itemize}
+        \item ToDo
+        \item Matrices are sometimes used to represent \textbf{vector transformations}.
+        % \item Include some example of matrix transpose
     \end{itemize}
 \end{frame}
 
 
 %\begin{frame}[fragile]{\textit{Rank-3 tensors}}
 %\end{frame}
-
 
 \section{Examples}
 \begin{frame}[fragile]
